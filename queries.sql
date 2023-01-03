@@ -1,6 +1,7 @@
 -- 2. Select only the Names of all the Bands
 USE
     DigiMusic;
+    
 SELECT NAME
     'Band Name'
 FROM
@@ -44,7 +45,7 @@ HAVING
 SELECT
     a.name 'Name',
     a.release_year 'Release Year',
-    SUM(s.length) 'Duration'
+    ROUND(SUM(s.length),2) Duration
 FROM
     albums a
 JOIN songs s ON
@@ -71,7 +72,7 @@ GROUP BY
 
  -- 12. Get the number of Songs for each Band
  SELECT
-    b.name 'Band',
+    b.name Band,
     COUNT(s.id) 'Number of Songs'
 FROM
     bands b
