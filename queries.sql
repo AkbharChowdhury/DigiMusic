@@ -2,7 +2,7 @@
 USE
     DigiMusic;
     
-SELECT NAME
+SELECT name
     'Band Name'
 FROM
     bands;
@@ -29,16 +29,25 @@ JOIN albums a ON
 
  -- 5. Get all Bands that have No Albums
 
+-- SELECT DISTINCT
+--     b.name 'Band Name'
+-- FROM
+--     bands b
+-- LEFT JOIN albums a ON
+--     a.band_id = b.id
+-- GROUP BY
+--     b.id
+-- HAVING
+--     COUNT(a.id) = 0;
+
 SELECT DISTINCT
     b.name 'Band Name'
 FROM
     bands b
 LEFT JOIN albums a ON
     a.band_id = b.id
-GROUP BY
-    b.id
-HAVING
-    COUNT(a.id) = 0;
+GROUP BY b.id
+HAVING COUNT(a.id) = 0;
 
 -- 6. Get the Longest Album
 SELECT
