@@ -9,11 +9,10 @@ FROM
 
 -- 3. Select the Oldest Album
 SELECT
-    a.name,
-    a.release_year,
-    a.band_id
+    name,
+    release_year oldest_album
 FROM
-    albums a
+    albums
 WHERE
     release_year IS NOT NULL
 ORDER BY
@@ -57,12 +56,15 @@ ORDER BY
 DESC
 LIMIT 1;
 
+--  10. Get the Average Length of all Songs
+SELECT ROUND(AVG(length),2) FROM songs;
+
 
 -- 11. Select the longest Song off each Album
 SELECT
     a.name 'Album',
     a.release_year 'Release Year',
-    MAX(s.length) Duration
+    ROUND(MAX(s.length),2) Duration
 FROM
     albums a
 JOIN songs s ON
